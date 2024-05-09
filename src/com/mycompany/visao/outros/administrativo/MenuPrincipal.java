@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.mycompany.visao.outros.corporativo;
+package com.mycompany.visao.outros.administrativo;
 
 import com.mycompany.utilizades.BancoDeDadosMySql;
 import com.mycompany.utilizades.Formularios;
