@@ -11,9 +11,23 @@ O intuito desse sistema foi ensinar os alunos a desenvolver um sistema de ponta-
   * Implantação;
   * Manutenção.   
 
-Para desenvolver esse sistema foi utilizado a linguagem Java (IDE Netbeans) para codificação, a biblioteca Swing para a criação das telas e o banco de dados MySql 8+.
+Para desenvolver esse sistema foi utilizado o **Java 8 (1.8)** com **JDK (21.0.1)**, a **IDE NetBeans (18)**, a **biblioteca Swing** para a criação das telas e o **banco de dados MySql 8.0**.
 
-O projeto segue o design pattern MVC.
+# Estrutura do projeto
+Este projeto segue o Design Pattern MVC (Model, View, Controller).
+
+  * com.mycompany.dao (Data Access Object)
+    * Contém as classes responsáveis por encapsular a lógica de manipulação dos dados no banco de dados.
+
+  * com.mycompany.modelo (Model)
+    * Contém representações das tabelas do banco de dados em classes java.
+  * com.mycompany.visao (View e Controller)
+    * Contém todas as telas do sistema.
+   
+    * **Obs**: para desenvolver as telas do sistema utilizou-se a biblioteca **Swing** do Java, que por sua vez embute o código da tela em uma classe que extende o **javax.swing.JFrame**. Desta forma, o código que trata as "requisições" recebidas pelo usuário e as manipula, ou seja o **Controller**, encontra-se dentro do **source** da própria tela.
+   
+  * com.mycompany.utilidades
+    * Contém classes e utilitários auxiliares que oferecem funcionalidades comuns ou genéricas utilizadas em todo o projeto. As classes aqui podem incluir métodos reutilizáveis, constantes, funções de ajuda e outras ferramentas que não se encaixam diretamente nas camadas principais do projeto, mas são necessárias em vários pontos do código. 
 
 # Configuração do banco de dados
 
