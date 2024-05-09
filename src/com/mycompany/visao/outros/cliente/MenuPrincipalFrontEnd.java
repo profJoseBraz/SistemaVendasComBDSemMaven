@@ -5,10 +5,10 @@
 package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoProduto;
-import com.mycompany.ferramentas.BancoDeDadosMySql;
-import com.mycompany.ferramentas.Constantes;
-import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.BancoDeDadosMySql;
+import com.mycompany.utilizades.Constantes;
+import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.modelo.ModProduto;
 import com.mycompany.visao.pessoa.CadPessoa;
 import java.sql.ResultSet;

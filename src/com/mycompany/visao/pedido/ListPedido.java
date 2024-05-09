@@ -6,7 +6,7 @@ package com.mycompany.visao.pedido;
 
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoPedido;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.Formularios;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 

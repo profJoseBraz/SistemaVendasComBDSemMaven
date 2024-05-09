@@ -6,9 +6,9 @@ package com.mycompany.visao.marca;
 
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.ferramentas.Constantes;
-import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.Constantes;
+import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.modelo.ModMarca;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.visao.estado.CadEstado;

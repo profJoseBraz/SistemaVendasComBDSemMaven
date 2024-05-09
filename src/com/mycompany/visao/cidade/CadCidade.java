@@ -4,12 +4,12 @@
  */
 package com.mycompany.visao.cidade;
 
-import com.mycompany.ferramentas.Constantes;
-import com.mycompany.ferramentas.DadosTemporarios;
+import com.mycompany.utilizades.Constantes;
+import com.mycompany.utilizades.DadosTemporarios;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.modelo.ModCidade;
 import com.mycompany.visao.estado.CadEstado;
 import java.sql.ResultSet;

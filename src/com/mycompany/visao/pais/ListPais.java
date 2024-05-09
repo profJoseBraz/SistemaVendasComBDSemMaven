@@ -6,8 +6,8 @@ package com.mycompany.visao.pais;
 
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.visao.categoria.CadCategoria;

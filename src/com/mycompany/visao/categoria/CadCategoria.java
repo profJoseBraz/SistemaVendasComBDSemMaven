@@ -4,9 +4,9 @@
  */
 package com.mycompany.visao.categoria;
 
-import com.mycompany.ferramentas.Constantes;
-import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.Constantes;
+import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import javax.swing.JOptionPane;

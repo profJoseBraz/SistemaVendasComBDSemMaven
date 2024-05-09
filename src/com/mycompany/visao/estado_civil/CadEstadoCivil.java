@@ -6,9 +6,9 @@ package com.mycompany.visao.estado_civil;
 
 import com.mycompany.dao.DaoEstadoCivil;
 import com.mycompany.dao.DaoMarca;
-import com.mycompany.ferramentas.Constantes;
-import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.Constantes;
+import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModEstadoCivil;
 import com.mycompany.modelo.ModMarca;

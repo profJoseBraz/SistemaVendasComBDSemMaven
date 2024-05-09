@@ -5,8 +5,8 @@
 package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoPedido;
-import com.mycompany.ferramentas.DadosTemporarios;
-import com.mycompany.ferramentas.Formularios;
+import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilizades.Formularios;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.modelo.ModProduto;
 import java.time.LocalDateTime;

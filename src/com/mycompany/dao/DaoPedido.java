@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.dao;
-import com.mycompany.ferramentas.BancoDeDadosMySql;
+import com.mycompany.utilizades.BancoDeDadosMySql;
 import java.sql.ResultSet;
 
 /**
