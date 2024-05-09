@@ -6,12 +6,14 @@ package com.mycompany.visao.estado_civil;
 
 import com.mycompany.dao.DaoEstadoCivil;
 import com.mycompany.dao.DaoMarca;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModEstadoCivil;
 import com.mycompany.modelo.ModMarca;
+import com.mycompany.visao.estado.CadEstado;
 import com.mycompany.visao.marca.CadMarca;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -131,10 +133,7 @@ public class ListEstadoCivil extends javax.swing.JFrame {
 
         tableEstadoCivil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "NOME"
@@ -148,6 +147,7 @@ public class ListEstadoCivil extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableEstadoCivil.setShowGrid(true);
         tableEstadoCivil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableEstadoCivilMouseClicked(evt);
@@ -222,8 +222,12 @@ public class ListEstadoCivil extends javax.swing.JFrame {
 
             DadosTemporarios.tempObject = (ModEstadoCivil) modEstadoCivil;
 
-            CadEstadoCivil cadEstadoCivil = new CadEstadoCivil();
-            cadEstadoCivil.setVisible(true);
+            if(Formularios.cadEstadoCivil == null)
+                Formularios.cadEstadoCivil = new CadEstadoCivil();
+
+            ((CadEstadoCivil) Formularios.cadEstadoCivil).existeDadosTemporarios();
+            Formularios.cadEstadoCivil.setVisible(true);
+            Formularios.cadEstadoCivil.setExtendedState(JFrame.NORMAL);
         }
     }//GEN-LAST:event_tableEstadoCivilMouseClicked
 

@@ -7,12 +7,14 @@ package com.mycompany.visao.endereco;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstado;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCidade;
 import com.mycompany.modelo.ModEndereco;
+import com.mycompany.visao.categoria.CadCategoria;
 import com.mycompany.visao.cidade.CadCidade;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -222,10 +224,7 @@ public class ListEndereco extends javax.swing.JFrame {
 
         tableEndereco.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "CIDADE", "RUA", "CEP", "NUMERO RES."
@@ -239,6 +238,7 @@ public class ListEndereco extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableEndereco.setShowGrid(true);
         tableEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableEnderecoMouseClicked(evt);
@@ -348,8 +348,12 @@ public class ListEndereco extends javax.swing.JFrame {
                 
                 DadosTemporarios.tempObject = (ModEndereco) modEndereco;
 
-                CadEndereco cadEndereco = new CadEndereco();
-                cadEndereco.setVisible(true);
+                if(Formularios.cadEndereco == null)
+                    Formularios.cadEndereco = new CadEndereco();
+                
+                ((CadEndereco) Formularios.cadEndereco).existeDadosTemporarios();
+                Formularios.cadEndereco.setVisible(true);
+                Formularios.cadEndereco.setExtendedState(JFrame.NORMAL);
             }
         }catch(Exception e){
             System.err.println(e.getMessage());

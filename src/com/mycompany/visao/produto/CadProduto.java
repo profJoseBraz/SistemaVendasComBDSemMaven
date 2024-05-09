@@ -8,9 +8,9 @@ import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoProduto;
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModProduto;
 import com.mycompany.visao.cidade.CadCidade;
 import java.sql.ResultSet;
@@ -56,7 +56,7 @@ public class CadProduto extends javax.swing.JFrame {
         tfIdMarca.setVisible(false);
     }
 
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModProduto){
             int id = ((ModProduto) DadosTemporarios.tempObject).getId();
             int idCategoria = ((ModProduto) DadosTemporarios.tempObject).getIdCategoria();

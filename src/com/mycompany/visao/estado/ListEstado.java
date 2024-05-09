@@ -6,10 +6,12 @@ package com.mycompany.visao.estado;
 
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModEstado;
+import com.mycompany.visao.cidade.CadCidade;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -186,10 +188,7 @@ public class ListEstado extends javax.swing.JFrame {
 
         tableEstado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ID", "PAIS", "NOME", "UF"
@@ -203,6 +202,7 @@ public class ListEstado extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableEstado.setShowGrid(true);
         tableEstado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableEstadoMouseClicked(evt);
@@ -275,8 +275,12 @@ public class ListEstado extends javax.swing.JFrame {
                 
                 DadosTemporarios.tempObject = (ModEstado) modEstado;
 
-                CadEstado cadEstado = new CadEstado();
-                cadEstado.setVisible(true);
+                if(Formularios.cadEstado == null)
+                    Formularios.cadEstado = new CadEstado();
+                
+                ((CadEstado) Formularios.cadEstado).existeDadosTemporarios();
+                Formularios.cadEstado.setVisible(true);
+                Formularios.cadEstado.setExtendedState(JFrame.NORMAL);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());

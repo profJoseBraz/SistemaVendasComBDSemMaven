@@ -4,7 +4,7 @@
  */
 package com.mycompany.dao;
 
-import com.mycompany.utilizades.BancoDeDadosMySql;
+import com.mycompany.utilidades.BancoDeDadosMySql;
 import java.sql.ResultSet;
 
 /**

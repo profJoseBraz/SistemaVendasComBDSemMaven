@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.dao;
-import com.mycompany.utilizades.BancoDeDadosMySql;
+import com.mycompany.utilidades.BancoDeDadosMySql;
 import java.sql.ResultSet;
 
 /**
@@ -24,6 +24,40 @@ public class DaoPedido extends BancoDeDadosMySql{
             getStatement().setInt(3, idProduto);
             getStatement().setString(4, dataPedido);
             getStatement().setInt(5, quantidade);
+            
+            getStatement().executeUpdate();
+            
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public Boolean excluir(int id){
+        try{
+            sql = "DELETE FROM PEDIDO WHERE ID = ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(1, id);
+            
+            getStatement().executeUpdate();
+            
+            return true;
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public Boolean excluirPorCliente(int id){
+        try{
+            sql = "DELETE FROM PEDIDO WHERE ID_CLIENTE = ?";
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(1, id);
             
             getStatement().executeUpdate();
             
@@ -83,6 +117,39 @@ public class DaoPedido extends BancoDeDadosMySql{
                 "   PRO.ID = P.ID_PRODUTO             " +
                 " WHERE                               " +
                 "   P.ID = ?                          " ;
+            
+            setStatement(getConexao().prepareStatement(sql));
+            
+            getStatement().setInt(1, id);
+            
+            setResultado(getStatement().executeQuery());
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        
+        return getResultado();
+    }
+    
+    public ResultSet listarPorIdCliente(int id){
+        try{
+            sql = 
+                " SELECT                              " +
+                "   P.ID AS ID,                       " +
+                "   PES.NOME AS PESSOA,               " +
+                "   PRO.NOME AS PRODUTO,              " +
+                "   P.DATA_PEDIDO AS DATA_PEDIDO,     " +
+                "   P.QUANTIDADE AS QUANTIDADE,       " +
+                "   P.QUANTIDADE * PRO.PRECO AS TOTAL " +
+                " FROM                                " +
+                "   PEDIDO P                          " +
+                " JOIN CLIENTE C ON                   " +
+                "   C.ID = P.ID_CLIENTE               " +
+                " JOIN PESSOA PES ON                  " +
+                "   PES.ID = C.ID_PESSOA              " +
+                " JOIN PRODUTO PRO ON                 " +
+                "   PRO.ID = P.ID_PRODUTO             " +
+                " WHERE                               " +
+                "   C.ID = ?                          " ;
             
             setStatement(getConexao().prepareStatement(sql));
             

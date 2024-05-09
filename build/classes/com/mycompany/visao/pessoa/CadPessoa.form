@@ -106,20 +106,6 @@
                                   <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tfId" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tfIdEndereco" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tfIdEstadoCivil" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tfIdCidade" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tfIdCliente" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="tfUsuario" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -139,8 +125,24 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tfId" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfIdEndereco" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfIdEstadoCivil" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfIdCidade" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfIdCliente" min="-2" pref="100" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="tfIdPedido" min="-2" pref="100" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="82" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="58" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -159,6 +161,7 @@
                           <Component id="tfIdEstadoCivil" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfIdCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tfIdCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfIdPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
@@ -466,6 +469,14 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirma&#xe7;&#xe3;o de senha *"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfIdPedido">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="idPedido"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfIdPedidoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -9,12 +9,14 @@ import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoPais;
 import com.mycompany.dao.DaoProduto;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModEstado;
 import com.mycompany.modelo.ModProduto;
 import com.mycompany.visao.estado.CadEstado;
+import com.mycompany.visao.marca.CadMarca;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -314,10 +316,7 @@ public class ListProduto extends javax.swing.JFrame {
 
         tableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "CATEGORIA", "MARCA", "NOME", "DESCRIÇÃO", "PREÇO"
@@ -331,6 +330,7 @@ public class ListProduto extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableProduto.setShowGrid(true);
         tableProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableProdutoMouseClicked(evt);
@@ -462,8 +462,12 @@ public class ListProduto extends javax.swing.JFrame {
                 
                 DadosTemporarios.tempObject = (ModProduto) modProduto;
 
-                CadProduto cadProduto = new CadProduto();
-                cadProduto.setVisible(true);
+                if(Formularios.cadProduto == null)
+                    Formularios.cadProduto = new CadProduto();
+
+                ((CadProduto) Formularios.cadProduto).existeDadosTemporarios();
+                Formularios.cadProduto.setVisible(true);
+                Formularios.cadProduto.setExtendedState(JFrame.NORMAL);
             }
         }catch(Exception e){
             System.out.println(e.getMessage());

@@ -6,9 +6,9 @@ package com.mycompany.visao.estado;
 
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModEstado;
 import com.mycompany.visao.cidade.CadCidade;
 import com.mycompany.visao.pais.CadPais;
@@ -52,7 +52,7 @@ public class CadEstado extends javax.swing.JFrame {
         tfIdPais.setVisible(false);
     }
     
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModEstado){
             int id = ((ModEstado) DadosTemporarios.tempObject).getId();
             int idPais = ((ModEstado) DadosTemporarios.tempObject).getIdPais();

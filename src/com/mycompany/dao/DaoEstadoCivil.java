@@ -4,12 +4,12 @@
  */
 package com.mycompany.dao;
 
-import com.mycompany.utilizades.BancoDeDadosMySql;
-import static com.mycompany.utilizades.BancoDeDadosMySql.getConexao;
-import static com.mycompany.utilizades.BancoDeDadosMySql.getResultado;
-import static com.mycompany.utilizades.BancoDeDadosMySql.getStatement;
-import static com.mycompany.utilizades.BancoDeDadosMySql.setResultado;
-import static com.mycompany.utilizades.BancoDeDadosMySql.setStatement;
+import com.mycompany.utilidades.BancoDeDadosMySql;
+import static com.mycompany.utilidades.BancoDeDadosMySql.getConexao;
+import static com.mycompany.utilidades.BancoDeDadosMySql.getResultado;
+import static com.mycompany.utilidades.BancoDeDadosMySql.getStatement;
+import static com.mycompany.utilidades.BancoDeDadosMySql.setResultado;
+import static com.mycompany.utilidades.BancoDeDadosMySql.setStatement;
 import java.sql.ResultSet;
 
 /**

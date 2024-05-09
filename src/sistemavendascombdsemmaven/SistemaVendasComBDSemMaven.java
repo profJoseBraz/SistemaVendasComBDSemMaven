@@ -4,7 +4,7 @@
  */
 package sistemavendascombdsemmaven;
 
-import com.mycompany.utilizades.BancoDeDadosMySql;
+import com.mycompany.utilidades.BancoDeDadosMySql;
 
 /**
  *

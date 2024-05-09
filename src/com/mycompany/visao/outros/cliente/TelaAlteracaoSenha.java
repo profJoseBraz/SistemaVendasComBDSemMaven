@@ -5,9 +5,9 @@
 package com.mycompany.visao.outros.cliente;
 
 import com.mycompany.dao.DaoPessoa;
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import java.sql.ResultSet;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;

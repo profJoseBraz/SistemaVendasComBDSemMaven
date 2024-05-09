@@ -6,12 +6,14 @@ package com.mycompany.visao.marca;
 
 import com.mycompany.dao.DaoMarca;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModMarca;
 import com.mycompany.modelo.ModPais;
+import com.mycompany.visao.estado_civil.CadEstadoCivil;
 import com.mycompany.visao.pais.CadPais;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -131,10 +133,7 @@ public class ListMarca extends javax.swing.JFrame {
 
         tableMarca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "NOME"
@@ -148,6 +147,7 @@ public class ListMarca extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableMarca.setShowGrid(true);
         tableMarca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableMarcaMouseClicked(evt);
@@ -222,8 +222,12 @@ public class ListMarca extends javax.swing.JFrame {
 
             DadosTemporarios.tempObject = (ModMarca) modMarca;
 
-            CadMarca cadMarca = new CadMarca();
-            cadMarca.setVisible(true);
+            if(Formularios.cadMarca == null)
+                Formularios.cadMarca = new CadMarca();
+
+            ((CadMarca) Formularios.cadMarca).existeDadosTemporarios();
+            Formularios.cadMarca.setVisible(true);
+            Formularios.cadMarca.setExtendedState(JFrame.NORMAL);
         }
     }//GEN-LAST:event_tableMarcaMouseClicked
 

@@ -4,13 +4,14 @@
  */
 package com.mycompany.visao.categoria;
 
-import com.mycompany.utilizades.BancoDeDadosMySql;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.BancoDeDadosMySql;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -272,9 +273,13 @@ public class ListCategoria extends javax.swing.JFrame {
             modCategoria.setDescricao(String.valueOf(tableCategoria.getValueAt(tableCategoria.getSelectedRow(), 2)));
 
             DadosTemporarios.tempObject = (ModCategoria) modCategoria;
-
-            CadCategoria cadCategoria = new CadCategoria();
-            cadCategoria.setVisible(true);
+            
+            if(Formularios.cadCategoria == null)
+                Formularios.cadCategoria = new CadCategoria();
+                
+            ((CadCategoria) Formularios.cadCategoria).existeDadosTemporarios();
+            Formularios.cadCategoria.setVisible(true);
+            Formularios.cadCategoria.setExtendedState(JFrame.NORMAL);
         }
     }//GEN-LAST:event_tableCategoriaMouseClicked
 

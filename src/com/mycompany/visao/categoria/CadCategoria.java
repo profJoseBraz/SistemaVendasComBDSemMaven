@@ -4,9 +4,9 @@
  */
 package com.mycompany.visao.categoria;
 
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.modelo.ModCategoria;
 import javax.swing.JOptionPane;
@@ -42,7 +42,7 @@ public class CadCategoria extends javax.swing.JFrame {
         tfId.setEnabled(false);
     }
     
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModCategoria){
             int id = ((ModCategoria) DadosTemporarios.tempObject).getId();
             String nome = ((ModCategoria) DadosTemporarios.tempObject).getNome();

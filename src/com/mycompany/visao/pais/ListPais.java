@@ -6,12 +6,14 @@ package com.mycompany.visao.pais;
 
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.visao.categoria.CadCategoria;
+import com.mycompany.visao.marca.CadMarca;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -131,10 +133,7 @@ public class ListPais extends javax.swing.JFrame {
 
         tablePais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "NOME"
@@ -148,6 +147,7 @@ public class ListPais extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablePais.setShowGrid(true);
         tablePais.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablePaisMouseClicked(evt);
@@ -226,8 +226,12 @@ public class ListPais extends javax.swing.JFrame {
 
             DadosTemporarios.tempObject = (ModPais) modPais;
 
-            CadPais cadPais = new CadPais();
-            cadPais.setVisible(true);
+            if(Formularios.cadPais == null)
+                Formularios.cadPais = new CadPais();
+
+            ((CadPais) Formularios.cadPais).existeDadosTemporarios();
+            Formularios.cadPais.setVisible(true);
+            Formularios.cadPais.setExtendedState(JFrame.NORMAL);
         }
     }//GEN-LAST:event_tablePaisMouseClicked
 

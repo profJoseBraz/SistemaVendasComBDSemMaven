@@ -4,12 +4,12 @@
  */
 package com.mycompany.visao.cidade;
 
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCidade;
 import com.mycompany.visao.estado.CadEstado;
 import java.sql.ResultSet;
@@ -52,7 +52,7 @@ public class CadCidade extends javax.swing.JFrame {
         tfIdEstado.setVisible(false);
     }
 
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModCidade){
             int id = ((ModCidade) DadosTemporarios.tempObject).getId();
             int idEstado = ((ModCidade) DadosTemporarios.tempObject).getIdEstado();

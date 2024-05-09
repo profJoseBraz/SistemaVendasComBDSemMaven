@@ -7,9 +7,9 @@ package com.mycompany.visao.pais;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModPais;
 import com.mycompany.visao.categoria.ListCategoria;
@@ -47,7 +47,7 @@ public class CadPais extends javax.swing.JFrame {
         tfId.setEnabled(false);
     }
 
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModPais){
             int id = ((ModPais) DadosTemporarios.tempObject).getId();
             String nome = ((ModPais) DadosTemporarios.tempObject).getNome();

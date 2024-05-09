@@ -7,12 +7,13 @@ package com.mycompany.visao.cidade;
 import com.mycompany.dao.DaoCategoria;
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEstado;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCategoria;
 import com.mycompany.modelo.ModCidade;
 import com.mycompany.visao.categoria.CadCategoria;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -160,10 +161,7 @@ public class ListCidade extends javax.swing.JFrame {
 
         tableCidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "ID", "ESTADO", "CIDADE"
@@ -177,6 +175,7 @@ public class ListCidade extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableCidade.setShowGrid(true);
         tableCidade.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableCidadeMouseClicked(evt);
@@ -278,8 +277,12 @@ public class ListCidade extends javax.swing.JFrame {
                 
                 DadosTemporarios.tempObject = (ModCidade) modCidade;
 
-                CadCidade cadCidade = new CadCidade();
-                cadCidade.setVisible(true);
+                if(Formularios.cadCidade == null)
+                    Formularios.cadCidade = new CadCidade();
+                
+                ((CadCidade) Formularios.cadCidade).existeDadosTemporarios();
+                Formularios.cadCidade.setVisible(true);
+                Formularios.cadCidade.setExtendedState(JFrame.NORMAL);
             }
         }catch(Exception e){
             System.err.println(e.getMessage());

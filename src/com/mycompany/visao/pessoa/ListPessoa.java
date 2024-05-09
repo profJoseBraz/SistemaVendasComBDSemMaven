@@ -8,14 +8,19 @@ import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoCliente;
 import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstadoCivil;
+import com.mycompany.dao.DaoPedido;
 import com.mycompany.dao.DaoPessoa;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCliente;
 import com.mycompany.modelo.ModEndereco;
+import com.mycompany.modelo.ModPedido;
 import com.mycompany.modelo.ModPessoa;
 import com.mycompany.visao.endereco.CadEndereco;
+import com.mycompany.visao.pais.CadPais;
 import java.sql.ResultSet;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -426,10 +431,7 @@ public class ListPessoa extends javax.swing.JFrame {
 
         tablePessoa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "CIDADE", "RUA", "CEP", "NÚM. RESIDENCIA", "NOME", "SOBRENOME", "GENERO", "TELEFONE", "EMAIL", "ESTADO CIVIL"
@@ -443,6 +445,7 @@ public class ListPessoa extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablePessoa.setShowGrid(true);
         tablePessoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablePessoaMouseClicked(evt);
@@ -534,7 +537,7 @@ public class ListPessoa extends javax.swing.JFrame {
                 modPessoa.setIdEndereco(idEndereco);
                 //
                 
-                //
+                //Pega o ID do estado civil dessa pessoa
                 DaoEstadoCivil daoEstadoCivil = new DaoEstadoCivil();
                 resultSet = daoEstadoCivil.listarPorNome(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 10)));
 
@@ -553,7 +556,7 @@ public class ListPessoa extends javax.swing.JFrame {
                 modEndereco.setNumeroResidencia(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 4)));
                 //
                 
-                //
+                //Pega o ID do cliente que representa essa pessoa
                 DaoCliente daoCliente = new DaoCliente();
                 resultSet = daoCliente.listarPorIdPessoa(Integer.parseInt(String.valueOf(tablePessoa.getValueAt(tablePessoa.getSelectedRow(), 0))));
 
@@ -570,8 +573,12 @@ public class ListPessoa extends javax.swing.JFrame {
                 DadosTemporarios.tempObject2 = (ModEndereco) modEndereco;
                 DadosTemporarios.tempObject3 = (ModCliente) modCliente;
                 
-                CadPessoa cadPessoa = new CadPessoa();
-                cadPessoa.setVisible(true);
+                if(Formularios.cadPessoa == null)
+                    Formularios.cadPessoa = new CadPessoa();
+
+                ((CadPessoa) Formularios.cadPessoa).existeDadosTemporarios();
+                Formularios.cadPessoa.setVisible(true);
+                Formularios.cadPessoa.setExtendedState(JFrame.NORMAL);
             }
         }catch(Exception e){
             System.err.println(e.getMessage());

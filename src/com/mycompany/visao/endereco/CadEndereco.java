@@ -8,9 +8,9 @@ import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstado;
 import com.mycompany.dao.DaoPais;
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModEndereco;
 import com.mycompany.modelo.ModEstado;
 import com.mycompany.visao.cidade.ListCidade;
@@ -55,7 +55,7 @@ public class CadEndereco extends javax.swing.JFrame {
         tfIdCidade.setVisible(false);
     }
 
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModEndereco){
             int id = ((ModEndereco) DadosTemporarios.tempObject).getId();
             int idCidade = ((ModEndereco) DadosTemporarios.tempObject).getIdCidade();

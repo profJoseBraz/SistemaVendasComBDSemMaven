@@ -8,12 +8,14 @@ import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoCliente;
 import com.mycompany.dao.DaoEndereco;
 import com.mycompany.dao.DaoEstadoCivil;
+import com.mycompany.dao.DaoPedido;
 import com.mycompany.dao.DaoPessoa;
-import com.mycompany.utilizades.Constantes;
-import com.mycompany.utilizades.DadosTemporarios;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Constantes;
+import com.mycompany.utilidades.DadosTemporarios;
+import com.mycompany.utilidades.Formularios;
 import com.mycompany.modelo.ModCliente;
 import com.mycompany.modelo.ModEndereco;
+import com.mycompany.modelo.ModPedido;
 import com.mycompany.modelo.ModPessoa;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -64,13 +66,16 @@ public class CadPessoa extends javax.swing.JFrame {
         
         setExtendedState(MAXIMIZED_BOTH);
         
-        tfIdEndereco.setVisible(false);
-        tfIdEstadoCivil.setVisible(false);
-        tfIdCidade.setVisible(false);
-        tfIdCliente.setVisible(false);
+//        tfIdEndereco.setVisible(false);
+//        tfIdEstadoCivil.setVisible(false);
+//        tfIdCidade.setVisible(false);
+//        tfIdCliente.setVisible(false);
+//        tfIdPedido.setVisible(false);
+
+        btnAcao.setText(Constantes.BTN_SALVAR_TEXT);
     }
 
-    private Boolean existeDadosTemporarios(){        
+    public Boolean existeDadosTemporarios(){        
         if(DadosTemporarios.tempObject instanceof ModPessoa){
             int id = ((ModPessoa) DadosTemporarios.tempObject).getId();
             int idEndereco = ((ModPessoa) DadosTemporarios.tempObject).getIdEndereco();
@@ -171,6 +176,9 @@ public class CadPessoa extends javax.swing.JFrame {
             tfSobrenome.setText("");
             tfTelefone.setText("");
             tfEmail.setText("");
+            tfUsuario.setText("");
+            pfSenha.setText("");
+            pfConfirmacaoSenha.setText("");
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível salvar a pessoa!");
         }
@@ -255,6 +263,17 @@ public class CadPessoa extends javax.swing.JFrame {
 
         }else{
             JOptionPane.showMessageDialog(null, "Não foi possível excluir o endereco!");
+        }
+    }
+    
+    private void excluirPedidoPorCliente(){
+        
+        DaoPedido daoPedido = new DaoPedido();
+
+        if (daoPedido.excluirPorCliente(Integer.parseInt(tfIdCliente.getText()))){
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Não foi possível excluir o pedido!");
         }
     }
     
@@ -383,6 +402,7 @@ public class CadPessoa extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         pfConfirmacaoSenha = new javax.swing.JPasswordField();
         jLabel16 = new javax.swing.JLabel();
+        tfIdPedido = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de pessoa");
@@ -484,6 +504,13 @@ public class CadPessoa extends javax.swing.JFrame {
 
         jLabel16.setText("Confirmação de senha *");
 
+        tfIdPedido.setText("idPedido");
+        tfIdPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfIdPedidoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -532,18 +559,6 @@ public class CadPessoa extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tfUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel14))
                                 .addGap(18, 18, 18)
@@ -557,8 +572,22 @@ public class CadPessoa extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAcao)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnExcluir)))
-                        .addGap(0, 82, Short.MAX_VALUE)))
+                                .addComponent(btnExcluir))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 58, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -572,7 +601,8 @@ public class CadPessoa extends javax.swing.JFrame {
                     .addComponent(tfIdEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfIdEstadoCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfIdCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfIdCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -704,6 +734,7 @@ public class CadPessoa extends javax.swing.JFrame {
                         "Deseja realmente excluir a pessoa?");
         
         if(escolha == JOptionPane.YES_OPTION){
+            excluirPedidoPorCliente();
             excluirCliente();
             excluir();
             excluirEndereco();
@@ -713,6 +744,10 @@ public class CadPessoa extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         Formularios.cadPessoa = null;
     }//GEN-LAST:event_formWindowClosed
+
+    private void tfIdPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIdPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfIdPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -791,6 +826,7 @@ public class CadPessoa extends javax.swing.JFrame {
     private javax.swing.JTextField tfIdCliente;
     private javax.swing.JTextField tfIdEndereco;
     private javax.swing.JTextField tfIdEstadoCivil;
+    private javax.swing.JTextField tfIdPedido;
     private javax.swing.JTextField tfNome;
     private javax.swing.JTextField tfNumero;
     private javax.swing.JTextField tfRua;

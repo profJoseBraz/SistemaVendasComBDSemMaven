@@ -6,7 +6,7 @@ package com.mycompany.visao.pedido;
 
 import com.mycompany.dao.DaoCidade;
 import com.mycompany.dao.DaoPedido;
-import com.mycompany.utilizades.Formularios;
+import com.mycompany.utilidades.Formularios;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 
@@ -363,10 +363,7 @@ public class ListPedido extends javax.swing.JFrame {
 
         tablePedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "NOME DO CLIENTE", "PRODUTO", "DATA DO PEDIDO", "QUANTIDADE", "TOTAL DO PEDIDO"
@@ -380,6 +377,7 @@ public class ListPedido extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablePedido.setShowGrid(true);
         jScrollPane1.setViewportView(tablePedido);
 
         btnBuscar.setText("Buscar");
