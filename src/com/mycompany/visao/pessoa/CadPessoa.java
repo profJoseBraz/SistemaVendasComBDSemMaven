@@ -158,6 +158,9 @@ public class CadPessoa extends javax.swing.JFrame {
             DadosTemporarios.tempObject2 = null;
             DadosTemporarios.tempObject3 = null;
             
+            btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
+            btnExcluir.setVisible(true);
+            
             return true;
         }else
             return false;

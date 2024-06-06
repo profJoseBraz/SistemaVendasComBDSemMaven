@@ -82,6 +82,9 @@ public class CadCidade extends javax.swing.JFrame {
             
             DadosTemporarios.tempObject = null;
             
+            btnAcao.setText(Constantes.BTN_ALTERAR_TEXT);
+            btnExcluir.setVisible(true);
+            
             return true;
         }else
             return false;
